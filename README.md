@@ -4,6 +4,8 @@ A collaborative fiction platform where imagination takes the driver’s seat.
 
 StoryLooms is a full-stack web application that lets users craft, collect, and share stories. It blends clean UI, seamless authentication, and a flexible content model into a platform designed for creative exploration.
 
+Deployed at: [https://story-looms.vercel.app/](https://story-looms.vercel.app/)
+
 ## ✨ Features
 
 ### 📝 User-Centric Story Experience
@@ -55,7 +57,7 @@ StoryLooms is a full-stack web application that lets users craft, collect, and s
 ## 🚀 Deployment URLs
 
 **Frontend (Vercel):**
-(https://story-looms.vercel.app/)[https://story-looms.vercel.app/]
+[https://story-looms.vercel.app/](https://story-looms.vercel.app/)
 
 **Backend (Render):**
 [https://storylooms.onrender.com/](https://storylooms.onrender.com/)
