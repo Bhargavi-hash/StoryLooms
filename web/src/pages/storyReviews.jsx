@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
+import { API_BASE } from "../config";
 
 function StoryReviews({ storyId }) {
   const [reviews, setReviews] = useState([]);

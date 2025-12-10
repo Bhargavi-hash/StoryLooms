@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import StoryReviews from "./storyReviews";
+import { API_BASE } from "../config";
 
 function StoryPage() {
     const { id } = useParams(); // Grabs ID from URL

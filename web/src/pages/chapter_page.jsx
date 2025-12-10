@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../config";
 
 function ChapterPage() {
     const { chapterId } = useParams(); // Grabs chapterId from URL

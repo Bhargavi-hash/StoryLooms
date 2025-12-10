@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../config";
 
 function CreateStory() {
     const navigate = useNavigate();
