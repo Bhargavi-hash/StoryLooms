@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import { API_BASE } from "../config";
+import LoginForm from "../components/LoginForm";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -28,30 +29,13 @@ function Login() {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Login to StoryLoom</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            placeholder='Username'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <LoginForm
+      username={username}
+      password={password}
+      setUsername={setUsername}
+      setPassword={setPassword}
+      handleSubmit={handleSubmit}
+    />
   );
 }
 
