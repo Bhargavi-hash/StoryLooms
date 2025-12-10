@@ -5,7 +5,7 @@ function CreateStory() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         // Handle story creation logic here
-        const response = await fetch('http://localhost:4000/api/stories', {
+        const response = await fetch(`${API_BASE}/api/stories`, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',

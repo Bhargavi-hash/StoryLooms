@@ -9,7 +9,7 @@ function ChapterPage() {
 
     useEffect(() => {
         const fetchChapter = async () => {
-            const response = await fetch(`http://localhost:4000/api/chapters/${chapterId}`);
+            const response = await fetch(`${API_BASE}/api/chapters/${chapterId}`);
             if (response.ok) {
                 const data = await response.json();
                 setChapter(data);

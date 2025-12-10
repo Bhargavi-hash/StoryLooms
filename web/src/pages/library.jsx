@@ -7,7 +7,7 @@ function Library() {
 
     useEffect(() => {
         const fetchLibrary = async () => {
-            const response = await fetch('http://localhost:4000/api/users/library', {
+            const response = await fetch(`${API_BASE}/api/users/library`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -23,7 +23,7 @@ function Library() {
     }, []);
 
     const removeFromLibrary = async (storyId) => {
-        const response = await fetch(`http://localhost:4000/api/users/remove-from-library/${storyId}`, {
+        const response = await fetch(`${API_BASE}/api/users/remove-from-library/${storyId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`

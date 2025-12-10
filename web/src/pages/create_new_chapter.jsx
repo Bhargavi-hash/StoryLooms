@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../config";
 
 function CreateNewChapter() {
     const { id } = useParams(); // Story ID from URL
@@ -9,7 +10,7 @@ function CreateNewChapter() {
 
     useEffect(() => {
         const fetchStory = async () => {
-            const response = await fetch(`http://localhost:4000/api/stories/${id}`);
+            const response = await fetch(`${API_BASE}/api/stories/${id}`);
             if (response.ok) {
                 const data = await response.json();
                 setStory(data);
@@ -20,7 +21,7 @@ function CreateNewChapter() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`http://localhost:4000/api/chapters/add/${id}`, {
+        const response = await fetch(`${API_BASE}/api/chapters/add/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

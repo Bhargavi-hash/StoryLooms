@@ -9,7 +9,7 @@ function EditChapterDetails() {
 
     useEffect(() => {
         const fetchChapterDetails = async () => {
-            const response = await fetch(`http://localhost:4000/api/chapters/${chapterId}`);
+            const response = await fetch(`${API_BASE}/api/chapters/${chapterId}`);
             if (response.ok) {
                 const data = await response.json();
                 setChapterDetails({ title: data.title, content: data.content, isPublished: data.isPublished });
@@ -21,7 +21,7 @@ function EditChapterDetails() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const updateChapter = async () => {
-            const response = await fetch(`http://localhost:4000/api/chapters/edit/${chapterId}`, {
+            const response = await fetch(`${API_BASE}/api/chapters/edit/${chapterId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -27,7 +27,7 @@ function LandingPage() {
 
     const displayStories = async () => {
         // Logic to display stories can be added here
-        const response = await fetch(`http://localhost:4000/api/stories/all`);
+        const response = await fetch(`${API_BASE}/api/stories/all`);
         if (!response.ok) {
             throw new Error("Failed to fetch stories");
         }

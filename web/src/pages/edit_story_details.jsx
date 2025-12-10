@@ -9,7 +9,7 @@ function EditStoryDetails() {
 
     useEffect(() => {
         const fetchStory = async () => {
-            const response = await fetch(`http://localhost:4000/api/stories/${id}`);
+            const response = await fetch(`${API_BASE}/api/stories/${id}`);
             if (response.ok) {
                 const data = await response.json();
                 setStory(data);
@@ -20,7 +20,7 @@ function EditStoryDetails() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`http://localhost:4000/api/stories/${id}`, {
+        const response = await fetch(`${API_BASE}/api/stories/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

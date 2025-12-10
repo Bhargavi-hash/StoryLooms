@@ -10,7 +10,7 @@ function StoryPageForAuthor() {
 
     useEffect(() => {
         const fetchStory = async () => {
-            const response = await fetch(`http://localhost:4000/api/stories/${id}`);
+            const response = await fetch(`${API_BASE}/api/stories/${id}`);
             if (response.ok) {
                 const data = await response.json();
                 setStory(data);
@@ -24,7 +24,7 @@ function StoryPageForAuthor() {
             if (story && story.chapters) {
                 const details = {};
                 for (const chapter_ID of story.chapters) {
-                    const response = await fetch(`http://localhost:4000/api/chapters/${chapter_ID}`);
+                    const response = await fetch(`${API_BASE}/api/chapters/${chapter_ID}`);
                     if (response.ok) {
                         const data = await response.json();
                         details[chapter_ID] = data;
@@ -47,7 +47,7 @@ function StoryPageForAuthor() {
 
 
     const ChapterDelete = async (chapter_ID) => {
-        const response = await fetch(`http://localhost:4000/api/chapters/${id}/${chapter_ID}`, {
+        const response = await fetch(`${API_BASE}/api/chapters/${id}/${chapter_ID}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ function StoryPageForAuthor() {
     };
 
     const handleChapterPublish = async (chapter_ID) => {
-        const response = await fetch(`http://localhost:4000/api/chapters/edit/${chapter_ID}`, {
+        const response = await fetch(`${API_BASE}/api/chapters/edit/${chapter_ID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ function StoryPageForAuthor() {
     };
 
     const handleChapterUnpublish = async (chapter_ID) => {
-        const response = await fetch(`http://localhost:4000/api/chapters/edit/${chapter_ID}`, {
+        const response = await fetch(`${API_BASE}/api/chapters/edit/${chapter_ID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

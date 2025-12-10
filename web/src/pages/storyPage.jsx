@@ -12,7 +12,7 @@ function StoryPage() {
 
     useEffect(() => {
         const fetchStory = async () => {
-            const response = await fetch(`http://localhost:4000/api/stories/${id}`);
+            const response = await fetch(`${API_BASE}/api/stories/${id}`);
             const data = await response.json();
             setStory(data);
         };
@@ -25,7 +25,7 @@ function StoryPage() {
             if (story && story.chapters) {
                 const details = {};
                 for (const chapter_ID of story.chapters) {
-                    const response = await fetch(`http://localhost:4000/api/chapters/${chapter_ID}`);
+                    const response = await fetch(`${API_BASE}/api/chapters/${chapter_ID}`);
                     if (response.ok) {
                         const data = await response.json();
                         details[chapter_ID] = data;
@@ -43,7 +43,7 @@ function StoryPage() {
 
     const AddToLib = async (storyId) => {
         try {
-            const response = await fetch(`http://localhost:4000/api/users/add-to-library/${storyId}`, {
+            const response = await fetch(`${API_BASE}/api/users/add-to-library/${storyId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ function StoryPage() {
 
 
     const removeFromLibrary = async (storyId) => {
-        const response = await fetch(`http://localhost:4000/api/users/remove-from-library/${storyId}`, {
+        const response = await fetch(`${API_BASE}/api/users/remove-from-library/${storyId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`

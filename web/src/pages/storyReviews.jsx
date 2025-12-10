@@ -14,7 +14,7 @@ function StoryReviews({ storyId }) {
   // Fetch all reviews for this story
   useEffect(() => {
     const fetchReviews = async () => {
-      const response = await fetch(`http://localhost:4000/api/reviews/story/${storyId}`);
+      const response = await fetch(`${API_BASE}/api/reviews/story/${storyId}`);
       if (response.ok) {
         const data = await response.json();
         setReviews(data);
@@ -33,7 +33,7 @@ function StoryReviews({ storyId }) {
   }, [storyId]);
 
   const updateLikes = async (id) => {
-    const response = await fetch(`http://localhost:4000/api/reviews/${id}/like`, {
+    const response = await fetch(`${API_BASE}/api/reviews/${id}/like`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ function StoryReviews({ storyId }) {
   };
 
   const fetchReplies = async (parentType, parentId) => {
-    const response = await fetch(`http://localhost:4000/api/comments/${parentType}/${parentId}`);
+    const response = await fetch(`${API_BASE}/api/comments/${parentType}/${parentId}`);
     if (response.ok) {
       const data = await response.json();
       setRepliesMap(prev => ({ ...prev, [parentId]: data }));
@@ -61,7 +61,7 @@ function StoryReviews({ storyId }) {
   };
 
   const handleAddReply = async (parentType, parentId, content) => {
-  const response = await fetch(`http://localhost:4000/api/comments/${parentType}/${parentId}`, {
+  const response = await fetch(`${API_BASE}/api/comments/${parentType}/${parentId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -88,8 +88,8 @@ function StoryReviews({ storyId }) {
 
     const method = editing ? "PUT" : "POST";
     const url = editing
-      ? `http://localhost:4000/api/reviews/${reviewId}`
-      : `http://localhost:4000/api/reviews/${storyId}`;
+      ? `${API_BASE}/api/reviews/${reviewId}`
+      : `${API_BASE}/api/reviews/${storyId}`;
 
     const response = await fetch(url, {
       method,

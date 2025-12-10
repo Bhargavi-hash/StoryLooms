@@ -10,7 +10,7 @@ function DisplayCreatorWorks() {
         // Fetch and display the creator's works
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/api/stories/creator-works/${username}`);
+                const response = await fetch(`${API_BASE}/api/stories/creator-works/${username}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch stories");
                 }
@@ -27,7 +27,7 @@ function DisplayCreatorWorks() {
 
     const handleDelete = async (storyId) => {
         try {
-            const response = await fetch(`http://localhost:4000/api/stories/${storyId}`, {
+            const response = await fetch(`${API_BASE}/api/stories/${storyId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
