@@ -4,15 +4,15 @@ function LoginForm({ username, password, setUsername, setPassword, handleSubmit 
   return (
     <div className="login-container">
       <div className="login-card">
-        
-        <img 
-          src="../../storyloomlogo.png"      // <-- drop a logo inside public/logo.png
+
+        <img
+          src="/storyloomlogo.png"      // <-- drop a logo inside public/logo.png
           alt="StoryLoom Logo"
           className="login-logo"
         />
         <br></br>
-        <img 
-          src="../../storyloom-navbar.png"      // <-- drop a logo inside public/logo.png
+        <img
+          src="/storyloom-navbar.png"      // <-- drop a logo inside public/logo.png
           alt="StoryLoom Logo"
           className="storynavbar-logo"
         />

@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { API_BASE } from '../config';
+import RegisterForm from '../components/RegisterForm';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -24,39 +25,15 @@ function Register() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Register for StoryLoom</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            placeholder='Username'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            placeholder='Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <RegisterForm
+      username={username}
+      setUsername={setUsername}
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      handleSubmit={handleSubmit}
+    />
   );
 }
 
