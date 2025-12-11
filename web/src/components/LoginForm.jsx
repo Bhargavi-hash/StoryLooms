@@ -6,13 +6,13 @@ function LoginForm({ username, password, setUsername, setPassword, handleSubmit 
       <div className="login-card">
         
         <img 
-          src="../../public/storyloomlogo.png"      // <-- drop a logo inside public/logo.png
+          src="../../storyloomlogo.png"      // <-- drop a logo inside public/logo.png
           alt="StoryLoom Logo"
           className="login-logo"
         />
         <br></br>
         <img 
-          src="../../public/storyloom-navbar.png"      // <-- drop a logo inside public/logo.png
+          src="../../storyloom-navbar.png"      // <-- drop a logo inside public/logo.png
           alt="StoryLoom Logo"
           className="storynavbar-logo"
         />
