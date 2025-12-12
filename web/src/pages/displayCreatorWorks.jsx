@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_BASE } from "../config";
+import CreatorStoryCard from "../components/CreatorStoryCard";
 
 function DisplayCreatorWorks() {
     const [stories, setStories] = useState([]);
@@ -45,37 +46,44 @@ function DisplayCreatorWorks() {
     };
 
     return (
-        <div>
-            <h1>{username ? `${username}'s Stories` : "All the author stories will be displayed here"}</h1>
-            <button onClick={() => navigate('/create-story')}>Create New Story</button>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-                {stories.length > 0 ? (
-                    stories.map((story) => (
-                        <div
-                            key={story._id}
-                            onClick={() => navigate(`/stories/author-view/${story._id}`)}
-                            style={{
-                                border: "1px solid #ccc",
-                                borderRadius: "8px",
-                                padding: "1rem",
-                                width: "250px",
-                                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                            }}
-                        >
-                            <h3>{story.title}</h3>
-                            <p>{story.description?.substring(0, 100)}...</p>
-                            <p><strong>Genre:</strong> {story.genre}</p>
-                            <small>Created on {new Date(story.createdAt).toLocaleDateString()}</small>
-                            <br></br>
-                            <button onClick={(e) => {e.stopPropagation(); handleDelete(story._id)}}>Delete</button>
-                        </div>
-                    ))
-                ) : (
-                    <p>No stories found for this author.</p>
-                )}
-            </div>
-            <button onClick={() => window.location.href = '/'}>Go to Home</button>
+        <div style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            padding: "20px",
+            maxWidth: "800px",
+            margin: "0 auto"
+        }}>
+            <h1 style={{ textAlign: "center", color: "#2AAA8A" }}>{username}'s Works</h1>
+            {/* Create new story button */}
+            <button
+                style={{
+                    padding: "10px 20px",
+                    backgroundColor: "#2AAA8A",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    alignSelf: "center",
+                    marginBottom: "20px"
+                }}
+                onClick={() => navigate("/create-story")}
+            >
+                Create New Story
+            </button>
+            {stories.length > 0 ? (
+                stories.map((story) => (
+                    <CreatorStoryCard
+                        key={story._id}
+                        story={story}
+                        onDelete={handleDelete}
+                    />
+                ))
+            ) : (
+                <p>No stories found for this author.</p>
+            )}
         </div>
+
     );
 }
 export default DisplayCreatorWorks;

@@ -1,0 +1,84 @@
+.story-container {
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 20px;
+    box-shadow: 4px 4px 4px 8px rgba(0,0,0,0.05);
+    background: wheatgray;
+    border-radius: 10px;
+}
+
+.story-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.story-description {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.story-meta p {
+    margin: 5px 0;
+}
+
+.library-btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.library-btn.add {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.library-btn.remove {
+    background-color: #d9534f;
+    color: white;
+}
+
+.home-btn {
+    padding: 8px 12px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.chapter-heading {
+    margin-top: 30px;
+    font-size: 1.5em;
+}
+
+.chapter-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.chapter-item {
+    border: 1px solid #ddd;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.chapter-title {
+    cursor: pointer;
+    color: #007bff;
+    margin: 0;
+}
+
+.chapter-title:hover {
+    text-decoration: underline;
+}
+
+.chapter-date {
+    margin-top: 5px;
+    color: #666;
+}

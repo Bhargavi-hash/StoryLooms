@@ -37,6 +37,10 @@ function CreateStory() {
                     <input type="text" name="title" required />
                 </div>
                 <div>
+                    <label htmlFor="coverimage">Cover Image URL:</label>
+                    <textarea name="coverimage"></textarea>
+                </div>
+                <div>
                     <label htmlFor="content">Description:</label>
                     <textarea name="content"></textarea>
                 </div>

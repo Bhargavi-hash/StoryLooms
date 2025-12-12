@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import StoryReviews from "./storyReviews";
+import StoryReviewsView from "../components/StoryReviewsViews";
+import StoryPageView from "../components/StoryPageView";
 import { API_BASE } from "../config";
+
 
 function StoryPage() {
     const { id } = useParams(); // Grabs ID from URL
@@ -110,60 +112,22 @@ function StoryPage() {
         return story.libraryReaders && story.libraryReaders.includes(userId);
     };
 
+    const goHome = () => {
+        navigate("/");
+    };
+
     return (
-        <div>
-            <h1>{story.title}</h1>
-            <p>{story.description}</p>
-            <p><strong>Author:</strong> {story.author?.username || "Unknown"}</p>
-            <p><strong>Genre:</strong> {story.genre}</p>
-            <p><strong>Collections:</strong> {story.collections}</p>
-            <p><strong>Chapters:</strong> {story.chapters.length}</p>
+    <StoryPageView
+        story={story}
+        chapterDetails={chapterDetails}
+        isInLibrary={isInLibrary()}
+        onAddToLibrary={() => AddToLib(story._id)}
+        onRemoveFromLibrary={() => removeFromLibrary(story._id)}
+        onChapterClick={(chapter_ID) => navigate(`/chapters/${chapter_ID}`)}
+        onBackHome={goHome}
+        reviewsComponent={<StoryReviewsView storyId={story._id} />}
+    />
 
-            {/* Add to library button or remove from library button */}
-            {isInLibrary() ? (
-                <button onClick={() => removeFromLibrary(story._id)}>Remove from library</button>
-                // Page should refresh itself to reflect changes
-
-            ) : (
-                <button onClick={() => AddToLib(story._id)}>Add to library</button>
-            )}
-            <button onClick={() => window.location.href = '/'}>Go to Home</button>
-
-            <h2>Chapters</h2>
-            <ul>
-                {story.chapters.map((chapter_ID, index) => {
-                    const chapter = getChapterDetails(chapter_ID);
-
-                    if (!chapter.isPublished) return null; // Skip drafts entirely
-
-                    return (
-                        <li
-                            key={chapter_ID}
-                            style={{
-                                border: "1px solid #ddd",
-                                margin: "8px 0",
-                                padding: "8px",
-                                borderRadius: "8px",
-                            }}
-                        >
-                            <h4
-                                onClick={() => navigate(`/chapters/${chapter_ID}`)}
-                                style={{ cursor: "pointer" }}
-                            >
-                                {chapter.title}
-                            </h4>
-                            <p>
-                                <em>
-                                    Created: {new Date(chapter.createdAt).toLocaleString()}
-                                </em>
-                            </p>
-                        </li>
-                    );
-                })}
-            </ul>
-            <StoryReviews storyId={story._id} />
-            
-        </div>
     );
 }
 export default StoryPage;
